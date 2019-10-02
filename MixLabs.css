@@ -1,0 +1,39 @@
+#item1 li{
+    float: left;
+    margin-left: 40px;
+}
+#item2{
+    list-style-image: url('https://img.icons8.com/android/24/000000/small-axe.png');
+}
+#pc1{
+    font-size: 25px;
+    line-height: 1.8cm;
+}
+.div1 {
+    border: 1px red solid;
+  }
+#div11{
+    border: 3px blue;
+    border-style: dotted;
+    border-left: 1px;
+    border-left: 2px dotted;
+    border-left: medium dashed green;
+  }
+.div2 {
+    border: 1px red solid;
+    border-radius:5px 10px 15px 20px;
+}
+#div21{
+    border: 3px blue;
+    border-style: dotted;
+
+    border-left: 1px;
+    border-left: 2px dotted;
+    border-left: medium dashed green;
+}
+#img1{
+    width: 300px;
+    border-radius: 5px;
+    float: right;
+    margin: 5px;
+}
