@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        var flag ="";
+        function myfuc1(obj) {
+            if (obj.innerText != "_")return;
+            if(flag == "O"){
+                obj.innerText="X";
+                flag = "X";
+                }
+            else{
+                obj.innerText="O";
+                flag = "O";
+                }
+        }
+        
+    </script>
+</head>
+
+<body>
+    <h1>ooxx遊戲</h1>
+    <caption>
+    </caption>
+    <div style="font-size: 80px; width: 300px;text-align: center">
+        <table id='table1' border="2" style="width: 300px;height: 300px">
+
+            <tr>
+                <td onclick="myfuc1(this);">_</td>
+                <td onclick="myfuc1(this);">_</td>
+                <td onclick="myfuc1(this);">_</td>
+            </tr>
+            <tr>
+                <td onclick="myfuc1(this);">_</td>
+                <td onclick="myfuc1(this);">_</td>
+                <td onclick="myfuc1(this);">_</td>
+            </tr>
+
+            <tr>
+                <td  onclick="myfuc1(this);">_</td>
+                <td  onclick="myfuc1(this);">_</td>
+                <td  onclick="myfuc1(this);">_</td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>
