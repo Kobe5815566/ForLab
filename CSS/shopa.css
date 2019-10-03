@@ -1,0 +1,87 @@
+.Plate1 {
+  background-color: white;
+  width: 800px;
+  height: 350px;
+  margin: 0px auto;
+}
+
+.Rectangle {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.imgclass {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  width: 600px;
+  height: 200px;
+}
+
+.imgclass img {
+  padding: 1px;
+}
+
+.Container {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  float: right;
+  height: 100px;
+}
+
+.CircleClass {
+  height: 150px;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.imgcircle {
+  height: 100px;
+  width: 90px;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+.imgcircle img {
+  margin: 20px auto;
+  padding: 1px;
+  border-radius: 50%;
+}
+
+.Plate2 {
+  background-color: white;
+  width: 800px;
+  height: 200px;
+  margin: 0px auto;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 5px;
+}
+
+.Plate2 div {
+  padding: 5px;
+  text-align: center;
+}
+
+.w3-light-green {
+  text-align: center;
+}
+/*# sourceMappingURL=shopa.css.map */

@@ -1,0 +1,66 @@
+.Plate1 {
+    background-color: white;
+    width: 800px;
+    height: 350px;
+    margin: 0px auto;
+
+}
+
+.Rectangle {
+    display: flex;
+}
+
+.imgclass {
+
+    flex-grow: 1;
+    width: 600px;
+    height: 200px;
+
+    img {
+        padding: 1px;
+    }
+
+}
+
+.Container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    float: right;
+    height: 100px;
+}
+
+.CircleClass {
+    height: 150px;
+    flex-grow: 1;
+    display: flex;
+}
+
+.imgcircle {
+    height: 100px;
+    width: 90px;
+    flex-grow: 1;
+    img {
+        margin: 20px auto;
+        padding: 1px;
+        border-radius: 50%;
+
+    }
+}
+.Plate2 {
+    background-color: white;
+    width: 800px;
+    height: 200px;
+    margin: 0px auto;
+    flex-grow: 1;
+    display: flex;
+    padding: 5px;
+    div{
+        padding: 5px;
+        text-align: center
+    }
+}
+.w3-light-green
+{
+    text-align: center
+}
