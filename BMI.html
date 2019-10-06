@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+    <script>
+        function ResultBMI() {
+            document.getElementById('result').innerHTML = "結果:" + CalcBMI();
+        }
+
+        function Button1_Click() {
+            CalcBMI()
+            ResultBMI()
+        }
+
+        function CalcBMI() {
+            var height = document.getElementById("height").value;
+            var weight = document.getElementById("weight").value;
+            var bmi = 0;
+            var Hm = height / 100;
+            bmi = weight / (Hm * Hm);
+            return bmi;
+        }
+    </script>
+</head>
+
+<body>
+    <form>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <label>身高 :</label>
+                    <input type="text" class="form-control" placeholder="請輸入您的身高" value="" id="height" name="height">
+                    <label>體重 :</label>
+                    <input type="text" class="form-control" placeholder="請輸入您的體重" value="" id="weight" name="weight">
+                    <label id="result">結果:</label><br />
+                    <input type="button" id="Button1" class="btn btn-primary" onclick="Button1_Click()" value="計算" />
+                </div>
+
+            </div>
+        </div>
+
+
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <title>Document</title>
+</head>
+<script>
+    //getElementById(抓取頁面上的元素)
+    function getElement(name) {
+        return document.getElementById(name);
+    }
+
+    //判斷是否可以送件
+    function Button_Submit() {
+        //抓取頁面上的checkboc1，取得是否checked
+        var isChecked = getElement('MustCheck').checked;
+        //如果是，就return true
+        if (isChecked) return true;
+        //否則就... 
+        alert('必須勾選同意!');
+        return false;
+    }
+
+    //當網頁載入完成後執行
+    window.onload = function () {
+        //hook event(在form1被submit時...)
+        getElement('form1').onsubmit = function () {
+            //呼叫 Button_Submit()
+            return Button_Submit();
+        };
+    };
+</script>
+
+<body>
+    <form id="form1"
+        action="http://isbaas.azurewebsites.net/WebForms/Form2Mail.aspx?mailto=spigfang@gmail.com&redirect=http://www.google.com"
+        method="POST">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header bg-primary">個人資料-必填</div>
+                        <div class="card-body">
+                            <div> <label>姓名:</label><br />
+                                <input type="text" placeholder="請輸入姓名" value="" id="fieldName" name="fieldName"
+                                    style="width: 100%">
+                            </div>
+                            <div style="margin: 10px auto">
+                                <label>密碼:</label><br />
+                                <input type="password" value="" id="password" name="password" style="width: 100%">
+                            </div>
+
+                            <p style="margin: 15px auto">
+                                性別 : <input type="radio" name="gender" value="male">男
+                                <input type="radio" name="gender" value="female">女
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header bg-primary">個人資料-興趣</div>
+                        <div class="card-body">
+                            <div>
+                                <label>興趣 :</label>
+                                <input type="checkbox" name="hobby" value="運動">運動
+                                <input type="checkbox" name="hobby" value="音樂">音樂
+                                <input type="checkbox" name="hobby" value="閱讀">閱讀
+                                <input type="checkbox" name="hobby" value="電影">電影
+                            </div>
+                            <div>
+                                <label>專長 :</label><br />
+                                <textarea id="fieldMultiLineText" cols="40" rows="5" style="width: 100%"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card" style="margin: 10px auto">
+                        <div class="card-header bg-primary">個人資料-地址</div>
+                        <div class="card-body">
+                            <div>
+
+                                <label>郵遞區號 :</label><br />
+                                <input type="text" value="" id="postnumber" name="postnumber" style="width: 100%">
+                            </div>
+                            <div style="margin: 10px auto">
+                                <label>城市 : </label><select name="city">
+                                    <option value="1">台北</option>
+                                    <option value="2">新北</option>
+                                    <option value="3">花蓮</option>
+                                    <option value="4">高雄</option>
+                                </select><br />
+                                <label>其他地址 : </label><br />
+                                <input type="text" id="address" name="address" value="" style="width: 100%">
+                            </div>
+                            <div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <input type="checkbox" id="MustCheck" name="MustCheck"> 同意你隨便使用個資...
+                <p>
+                    <input style="margin: 5px auto" type="reset" value="重新填寫" class="btn btn-primary" />
+                    <button type="submit" class="btn btn-primary">送件</button>
+                </p>
+            </div>
+        </div>
+
+
+
+    </form>
+
+</body>
+
+</html>
