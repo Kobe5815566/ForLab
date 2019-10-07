@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <script>
+        //判斷是否可以送件
+        function Button_Submit() {
+            //抓取頁面上的checkboc1，取得是否checked
+            var isChecked = document.getElementById('MustCheck').checked;
+            //如果是，就return true
+            if (isChecked) {
+                document.getElementById('modal-bodytext').innerHTML = "登入成功";
+                $('#myModal').modal();
+            }
+            //否則就... 
+            else {
+                document.getElementById('modal-bodytext').innerHTML = "請勾選我同意本系統使用條款";
+                $('#myModal').modal();
+            }
+
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-primary">登入系統</div>
+                <div class="card-body">
+                    <div>
+                        <input type="button" value="註冊新帳號" onclick="location.href='SignupSonPage.html'"
+                            style="float: right"><br />
+                    </div>
+                    <div> <label>帳號:</label><br />
+                        <input type="text" value="" id="countnumber" name=" countnumber" style="width: 100%">
+                    </div>
+                    <div style="margin: 10px auto">
+                        <label>密碼:</label><br />
+                        <input type="password" value="" id="password" name="password" style="width: 100%">
+                    </div>
+                    <br />
+                    <div>
+                        <input type="checkbox" id="MustCheck" name="MustCheck">勾選我同意本系統<a href="#">使用條款 </a>
+                    </div>
+                    <button class="btn btn-primary" style="width: 100%" data-toggle="modal" data-target="#myModal"
+                        onclick="Button_Submit()">登入</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">提示</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <span id="modal-bodytext"></span>
+
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
