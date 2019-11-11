@@ -30,7 +30,7 @@
     </style>
     <script>
         var today = new Date();
-        var month = today.getMonth();
+        var month = today.getMonth()+1;
         var year = today.getFullYear();
         var FirstDay;
         var LastDay;
@@ -41,25 +41,21 @@
         function BottonToGeTNewCalender() {
             $('#AddnewCalender').click(function (e) {
                 year = $('#Field_Year').val();
-                month = $('#Newmonth').val() - 1;
-
-                FirstDay = new Date(year, month, 1);
-                LastDay = new Date(year, month + 1, 0);
+                month = $('#Newmonth').val();
 
                 cleantable();
-                importCalendar(FirstDay, LastDay);
-                showMonth(year, month + 1)
+                currentMonth();
             });
         }
 
         function toLastMonth() {
             $('#lastMon').click(function (e) {
                 cleantable();
-
-                if (month > 0) {
+                
+                if (month > 1) {
                     month -= 1;
                 } else {
-                    month = 11;
+                    month = 12;
                     year -= 1;
                 }
                 currentMonth();
@@ -69,12 +65,12 @@
         function toNextMonth() {
             $('#nextMon').click(function (e) {
                 cleantable();
-                let nextmon = month;
-                if (month < 11) {
-                    month += 1;
+               
+                if (month < 12) {
+                    month -= (-1);
                 } else {
-                    month = 0;
-                    year += 1;
+                    month = 1;
+                    year -= (-1);
                 }
                 currentMonth();
             });
@@ -113,6 +109,7 @@
 
         function cleantable() {
             $('#tablebody').html('');
+          
         }
 
 
@@ -131,10 +128,10 @@
         }
 
         function currentMonth() {
-            let dayone = new Date(year, month, 1)
-            let daylast = new Date(year, month + 1, 0)
-            importCalendar(dayone, daylast);
-            showMonth(year, month + 1)
+            FirstDay = new Date(year, month-1, 1)
+            LastDay = new Date(year, month, 0)
+            importCalendar(FirstDay, LastDay);
+            showMonth(year, month)
         }
 
         /*function creatable(day) {
