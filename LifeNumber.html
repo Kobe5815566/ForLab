@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+    </script>
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+
+    <script>
+        var constellation;
+        var lifeNumber;
+        var input;
+
+        function AjaxAns() { //從Ajax找出生命靈數的文字敘述
+            GetBirth();
+            calculateLifeNum();
+            $.ajax({
+                type: "Get",
+                url: `https://buildschoolnumerology.azurewebsites.net/api/Number/Numerology?constellation=${constellation}`,
+                data: "",
+                dataType: "json",
+                success: function (response) {
+                    $('#answer').append(
+                        ` <li class="list-group-item">
+                        <button type="button" class="close">&times;</button>
+                     <span id="showLifeNum" class="badge badge-info">${input}</span> 出生的你，星座是 <I>${response.name}</I><br>
+                            你的生命靈數: ${lifeNumber}.<br>
+                            ${response.lookup[lifeNumber-1]}</li>`)
+                    //remove answer
+                    $('.close').click(function () {
+                        $(this).parent().remove()
+                    })
+                }
+            });
+        }
+
+        function calculateLifeNum() {
+
+
+            var n = input.replace(/-/g, '');
+            var number = n.split('').join('+')
+            let sum = eval(number);
+            if (sum > 9) {
+                lifeNumber = Math.floor(sum / 10) + sum % 10;
+                if (lifeNumber == 10) {
+                    lifeNumber = 1;
+                }
+            }
+        }
+
+
+        function GetBirth() {
+
+            //input="YYYY-MM-dd"
+            var month = input[5] + input[6]; //MM
+            var day = input[8] + input[9]; //dd
+            console.log('month', month);
+            console.log('day', day);
+            if (month == 01 && day >= 20 || month == 02 && day < 19) {
+                constellation = "aquarius";
+            }
+            if (month == 02 && day >= 19 || month == 03 && day < 21) {
+                constellation = "pisces";
+            }
+            if (month == 03 && day >= 21 || month == 04 && day < 20) {
+                constellation = "aries";
+            }
+            if (month == 04 && day >= 20 || month == 05 && day < 21) {
+                constellation = "taurus";
+            }
+            if (month == 05 && day >= 21 || month == 06 && day < 22) {
+                constellation = "gemini";
+            }
+            if (month == 06 && day >= 22 || month == 07 && day < 23) {
+                constellation = "cancer";
+            }
+            if (month == 07 && day >= 23 || month == 08 && day < 23) {
+                constellation = "leo";
+            }
+            if (month == 08 && day >= 23 || month == 09 && day < 23) {
+                constellation = "virgo";
+            }
+            if (month == 09 && day >= 23 || month == 10 && day < 24) {
+                constellation = "libra";
+            }
+            if (month == 10 && day >= 24 || month == 11 && day < 23) {
+                constellation = "scorpio";
+            }
+            if (month == 11 && day >= 23 || month == 12 && day < 22) {
+                constellation = "sagittarius";
+            }
+            if (month == 12 && day >= 22 || month == 01 && day < 20) {
+                constellation = "capricorn";
+            }
+            return constellation;
+        }
+
+        $(document).ready(function () {
+            $('#Search').click(function (e) {
+                input = $('#date').val();
+
+                if (input[5] == 0) {
+                    month = input[6];
+                } else {
+                    month = input[5] + input[6];
+                }
+                var date = input[8] + input[9];
+                $('#showLifeNum').html(input);
+                AjaxAns();
+
+            });
+        });
+    </script>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card-header bg-primary">生命靈數</div>
+                <div class="card-body" style="background-color:skyblue;">
+                    <div>
+                        <input type="date" id="date">
+                        <input type="button" id="Search" value="search" class="btn btn-info">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <ul id="answer" class="list-group">
+
+
+            </ul>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+</body>
+
+</html>
