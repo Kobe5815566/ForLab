@@ -5,32 +5,152 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
     <title>Document</title>
+
+    <script>
+        var json = {
+            items: [{
+
+                    name: "MyFirstHtml",
+                    url: "MyFirstHtml.html",
+                },
+                {
+                    name: "Bulid_School開始",
+                    url: "Bulid_School.html",
+                },
+                {
+                    name: "Blog_EX.html",
+                    url: "Blog_EX.html",
+                },
+                {
+                    name: "List應用",
+                    url: "ListS.html",
+                },
+                {
+                    name: "部落格留言",
+                    url: "Blog_Message.html",
+                },
+                {
+                    name: "簡易table練習",
+                    url: "SimpleTable.html",
+                },
+                {
+                    name: "table練習part2",
+                    url: "separate.html",
+                },
+                {
+                    name: "邊框CSS練習",
+                    url: "CSSColorBorder.html",
+                },
+                {
+                    name: "BS班表",
+                    url: "ClassForm.html",
+                },
+                {
+                    name: "MixLabs",
+                    url: "MixLabs.html",
+                },
+                {
+                    name: "個人資料表練習",
+                    url: "Personal_Information.html",
+                },
+                {
+                    name: "BS班表",
+                    url: "ClassForm.html",
+                },
+                {
+                    name: "蝦皮購物復刻",
+                    url: "Shopa.html",
+                },
+                {
+                    name: "BMI 簡易練習",
+                    url: "BMI.html",
+                },
+                {
+                    name: "輪播圖練習",
+                    url: "Leading.html",
+                },
+                {
+                    name: "BMI +Bootstrap",
+                    url: "NewBMI.html",
+                },
+                {
+                    name: "註冊登入練習",
+                    url: "SinpupAndLogin.html",
+                },
+                {
+                    name: "OOXX_Game",
+                    url: "OOXX_Game.html",
+                },
+                {
+                    name: "註冊登入練習",
+                    url: "SinpupAndLogin.html",
+                },
+                {
+                    name: "生命靈數",
+                    url: "LifeNumber.html",
+                },
+                {
+                    name: "UBIKE地圖",
+                    url: "ubike.html",
+                },
+                {
+                    name: "信義房屋復刻",
+                    url: "Sinyi/index.html",
+                },
+                {
+                    name: "Vue練習",
+                    url: "DemoVueCalc.html",
+                },
+                {
+                    name: "Vue練習by個人資料",
+                    url: "PersonalFormForVue.html",
+                },
+                {
+                    name: "猜數字遊戲",
+                    url: "GuessNumber/guess-number.html",
+                },
+                {
+                    name: "月曆",
+                    url: "HKTCalender.html",
+                }
+
+
+
+
+
+
+
+
+            ]
+        };
+
+        function bindingSimpleTest() {
+            new Vue({
+                el: "#block1",
+                data: json
+
+            });
+        }
+
+        $(document).ready(function () {
+            bindingSimpleTest();
+        });
+    </script>
 </head>
 
 <body>
-    <a href="MyFirstHtml.html">MyFirstHtml</a>
-    <a href="Bulid_School.html">Bulid_School_Blog</a>
-    <a href="Blog_EX.html">Blog_EX.html</a>git
-    <a href="ListS.html">ListS.html</a>
-    <a href="Blog_Message.html">Blog_Message.html</a>
-    <a href="OOXXTable.html">OOXXTable.html</a>
-    <a href="SimpleTable.html">SimpleTable.html</a>
-    <a href="OOXX_Game.html">OOXX_Game.html</a>
-    <a href="separate.html">separate.html</a>
-    <a href="CSSColorBorder.html">CSSColorBorder.html</a>
-    <a href="ClassForm.html">ClassForm.html</a>
-    <a href="MixLabs.html">MixLabs.html</a>
-    <a href="MixLabs.html">MixLabs.html</a>
-    <a href="Personal_Information.html">Personal_Information.html</a>
-    <a href="Shopa.html">Shopa.html</a>
-    <a href="Pensonal_Infor_Card.html">Pensonal_Infor_Card.html</a>
-    <a href="BMI.html">BMI.html</a>
-    <a href="imgweb/index.html">imgweb/index.html</a>
-    <a href=" Leading.html"> Leading.html</a>
-    <a href=" NewBMI.html"> NewBMI.html</a>
-    <a href=" SinpupAndLogin.html"> SinpupAndLogin.html</a>
-    
+    <div id="block1">
+        <div v-for="item in items">
+            <a :href=`${item.url}`>{{item.name}}</a>
+        </div>
+
+    </div>
+
+
+
 </body>
 
 </html>

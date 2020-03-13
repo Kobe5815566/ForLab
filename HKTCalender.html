@@ -22,24 +22,43 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
     <style>
-    td {
-        width: 100px;
-        height: 80px;
-    }
-
+        td {
+            width: 100px;
+            height: 80px;
+        }
     </style>
     <script>
         var today = new Date();
-        var month = today.getMonth()+1;
+        var month = today.getMonth() + 1;
         var year = today.getFullYear();
         var FirstDay;
         var LastDay;
         /*var item = [
             $('#tablebody').html()
         ]*/
+        function BottonToGeTNewEvent() {
+            $('#addNewEvent').click(function () {
+                let yearEvent = $('#Event_Field_Year').val();
+                let monthEvent = $('#Event_month').val();
+                let dayEvent = $('#Event_Field_Day').val();
+                let forEvent = $('#Event_field_Thing').val();
+                let yyyyMMddForEvent = yearEvent + monthEvent + dayEvent;
+
+                let eventE = '<span>' + forEvent + '</span>'
+                if ($('a').attr('class') == yyyyMMddForEvent) {
+                    $('.yyyyMMddForEvent').html(eventE);
+                }
+                // $('a').hasClass(yyyyMMddForEvent).append(eventE);
+                console.log(eventE);
+
+
+
+
+            });
+        }
 
         function BottonToGeTNewCalender() {
-            $('#AddnewCalender').click(function (e) {
+            $('#AddnewCalender').click(function () {
                 year = $('#Field_Year').val();
                 month = $('#Newmonth').val();
 
@@ -51,7 +70,7 @@
         function toLastMonth() {
             $('#lastMon').click(function (e) {
                 cleantable();
-                
+
                 if (month > 1) {
                     month -= 1;
                 } else {
@@ -65,7 +84,7 @@
         function toNextMonth() {
             $('#nextMon').click(function (e) {
                 cleantable();
-               
+
                 if (month < 12) {
                     month -= (-1);
                 } else {
@@ -78,10 +97,10 @@
 
 
         function importCalendar(FirstDay, LastDay) {
-
-            var times = FirstDay.getDay();
+            let yyyyMM = year + '' + month;
+            let times = FirstDay.getDay();
             console.log('1', times)
-            var tableRow = "<tr>";
+            let tableRow = "<tr>";
             for (var p = 0; p < times; p++) {
                 tableRow += "<td >" + "</td>";
             }
@@ -91,17 +110,20 @@
                 if (times == 6) {
 
                     times = 0;
-                    tableRow += "<td id=" + y + "id>" + y + "</td>";
+                    //.append($(<td>)
+                    //.append($(<a>).attr('id',yyyyMM).attr('hreg','#')
+
+
+                    tableRow += "<td><p>" + y + '</p><div><a href="#" class="' + yyyyMM + y + '"> </a></div></td>';
                     tableRow += "</tr>";
                     tableRow += "<tr>";
                 } else {
                     times++;
-                    tableRow += "<td >" + y + "</td>";
+                    tableRow += "<td><p>" + y + '</p><div><a href="#" class="' + yyyyMM + y + '"> </a></div></td>';
                 }
 
             }
 
-            console.log('tableRow is', tableRow);
 
             $('#tablebody').append(tableRow)
 
@@ -109,7 +131,7 @@
 
         function cleantable() {
             $('#tablebody').html('');
-          
+            BottonToGeTNewEvent();
         }
 
 
@@ -128,26 +150,18 @@
         }
 
         function currentMonth() {
-            FirstDay = new Date(year, month-1, 1)
+            FirstDay = new Date(year, month - 1, 1)
             LastDay = new Date(year, month, 0)
             importCalendar(FirstDay, LastDay);
             showMonth(year, month)
         }
 
-        /*function creatable(day) {
-            console.log('Do create')
-            var tableRow = "<tr>";
-            for (var x = 0; x < 7; x++) {
-                tableRow += "<td >" +day+ "</td>"
-            }
-            tableRow += "</tr>"
-            $('#tablebody').append(tableRow)
-        }*/
         $(document).ready(function () {
             currentMonth();
             BottonToGeTNewCalender();
             toNextMonth();
             toLastMonth();
+            BottonToGeTNewEvent();
         });
     </script>
 
@@ -171,6 +185,9 @@
                                 data-target="#NewCalenderModal">
                                 月曆搜尋</button>
                             <a id="showmonth" style="padding: 35%;"></a>
+                            <button class="btn btn-primary" id="NewCalender" data-toggle="modal"
+                                data-target="#NewEventModal">
+                                新增事件</button>
                         </td>
                     </tr>
                     <tr style="text-align: center;">
@@ -226,6 +243,44 @@
             </div>
         </div>
     </div>
+
+    <div class="modal" id="NewEventModal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">新事件</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" id="Event_Field_Year">
+                    <label>Year</label>
+                    <select name="month" id="Event_month">
+                        <option value="1">Mon</option>
+                        <option value="2">Feb</option>
+                        <option value="3">Mar</option>
+                        <option value="4">Apr</option>
+                        <option value="5">May</option>
+                        <option value="6">Jun</option>
+                        <option value="7">July</option>
+                        <option value="8">Aug</option>
+                        <option value="9">Sep</option>
+                        <option value="10">Oct</option>
+                        <option value="11">Nov</option>
+                        <option value="12">Dec</option>
+                    </select><label>Month </label>
+                    <input type="text" id="Event_Field_Day">
+                    <textarea id="Event_field_Thing" class="form-control" cols="60" rows="10"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="addNewEvent">新增</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 
 </html>
