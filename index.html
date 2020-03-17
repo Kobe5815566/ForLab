@@ -5,13 +5,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
-    <title>Document</title>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
 
+    <title>Document</title>
+    <style>
+        body {
+            background-color: lightcyan;
+        }
+
+        #block1 {
+            text-align: center;
+            ;
+        }
+
+        h3 {
+            text-align: center;
+            font-size: 35px;
+            color: darkblue;
+        }
+
+        .simplediv {
+            padding-left: 200px;
+            padding-bottom: 25px;
+        }
+
+        p {
+
+            width: 200px;
+            height: 50px;
+            background-color: deepskyblue;
+            border-radius: 1px;
+        }
+
+        a {
+
+
+            text-decoration: none;
+            font-size: 20px;
+            color: lightcyan;
+        }
+    </style>
     <script>
         var json = {
-            items: [{
+            simple: [{
 
                     name: "MyFirstHtml",
                     url: "MyFirstHtml.html",
@@ -57,8 +99,8 @@
                     url: "Personal_Information.html",
                 },
                 {
-                    name: "BS班表",
-                    url: "ClassForm.html",
+                    name: "計算機",
+                    url: "Calcator.html",
                 },
                 {
                     name: "蝦皮購物復刻",
@@ -73,7 +115,7 @@
                     url: "Leading.html",
                 },
                 {
-                    name: "BMI +Bootstrap",
+                    name: "BMI +CSS",
                     url: "NewBMI.html",
                 },
                 {
@@ -142,12 +184,18 @@
 </head>
 
 <body>
-    <div id="block1">
-        <div v-for="item in items">
-            <a :href=`${item.url}`>{{item.name}}</a>
+    <div class="container-fluid">
+        <h3>前端作品集</h3>
+        <br />
+        <div id="block1" class="row simplediv">
+            <div class="col-md-4" v-for="item in simple">
+                <p>
+                    <a :href=`${item.url}`>{{item.name}}</a>
+                </p>
+            </div>
         </div>
-
     </div>
+
 
 
 
